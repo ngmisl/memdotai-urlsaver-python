@@ -13,9 +13,7 @@ def get_metadata(input_url):
     return f"{meta_title}\n{meta_desc}"
 
 
-def main():
-    save_url = input("Enter Url: ")
-
+def main(save_url):
     # make sure to add a .env: API = <APIKEY>
     load_dotenv()
     api_key = os.getenv("API")
@@ -35,4 +33,7 @@ def main():
 
 if __name__ == "__main__":
     while True:
-        main()
+        save_url = input("Enter Url, or q to quit: ")
+        if save_url == "q":
+            break
+        main(save_url)
