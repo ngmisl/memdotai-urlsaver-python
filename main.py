@@ -30,7 +30,7 @@ def main():
     if response.status_code == 200:
         print("Successfully saved")
     else:
-        print("Failed to save")
+        print("Failed to save: {response.status_code}")
 
 
 if __name__ == "__main__":
