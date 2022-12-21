@@ -10,7 +10,7 @@ def get_metadata(input_url):
     page = metadata_parser.MetadataParser(url=input_url, search_head_only=True)
     meta_title = page.metadata["og"]["title"]
     meta_desc = page.metadata["og"]["description"]
-    return f"{meta_title}\n{meta_desc}"
+    return f"Title: {meta_title}\n Description: {meta_desc}"
 
 
 def main(save_url):
@@ -23,7 +23,7 @@ def main(save_url):
     }
 
     meta = get_metadata(save_url)
-    data = {"content": f"Title: {meta}\nURL: {save_url}"}
+    data = {"content": f"{meta}\nURL: {save_url}"}
     response = requests.post(url, headers=headers, json=data)
     if response.status_code == 200:
         print("Successfully saved")
