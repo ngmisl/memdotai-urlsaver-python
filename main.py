@@ -6,6 +6,17 @@ from dotenv import load_dotenv
 url = "https://api.mem.ai/v0/mems"
 
 
+def check_env():
+    if os.path.exists(".envtest"):
+        print("file already exists")
+    else:
+        with open(".env", "w") as fp:
+            api_add = input("Enter your API Key: ")
+            fp.write(f"API = {api_add}")
+            print(f"Created .env file with your API Key")
+            fp.close()
+
+
 def get_metadata(input_url):
     page = metadata_parser.MetadataParser(url=input_url, search_head_only=True)
     meta_title = page.metadata["og"]["title"]
@@ -32,6 +43,7 @@ def main(save_url):
 
 
 if __name__ == "__main__":
+    check_env()
     while True:
         save_url = input("Enter Url, or q to quit: ")
         if save_url == "q":
