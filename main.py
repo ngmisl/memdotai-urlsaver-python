@@ -7,8 +7,8 @@ url = "https://api.mem.ai/v0/mems"
 
 
 def check_env():
-    if os.path.exists(".envtest"):
-        print("file already exists")
+    if os.path.exists(".env"):
+        print(".env already exists")
     else:
         with open(".env", "w") as fp:
             api_add = input("Enter your API Key: ")
